@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Departamento</title>
+        <link rel="stylesheet" href="../static/css/departamentos_home.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="../static/js/departamentos_all.js"></script>
+    </head>
+
+    <body>
+        <div>
+        <center>
+        <h4>Actualizar Departamento</h4>
+        <form action="/home/departamentos/update" method="post"><br>
+        	<label for="fname">Id del departamento:</label><br>
+  			<input type="text" id="dept_no" name="dept_no"><br>
+  			<label for="fname">Nombre:</label><br>
+  			<input type="text" id="nombre" name="nombre"><br>
+  			<label for="floc">Loc:</label><br>
+  			<input type="text" id="loc" name="loc"><br>
+  			<p><button type="submit">Actualizar</button></p>
+		</form>
+        </center>
+        </div>
+    </body>
+</html>

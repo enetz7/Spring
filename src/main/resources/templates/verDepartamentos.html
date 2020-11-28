@@ -1,0 +1,20 @@
+<html>
+    <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script>$(document).ready(function() {
+    $.ajax({
+        url: "http://localhost:8080/departamentoAll"
+    }).then(function(response) {
+    	var trHTML = '';
+        $.each(response, function (i, item) {
+            trHTML += '<tr><td>' +"Dept_no: "+ item.deptNo + '</td><td>' + "Nombre: "+item.dnombre +'</td>' +'<td>'+'<form method="POST" action="/verDepartamento?dept_no='+item.deptNo+'">'+'<button type="submit">Ver detalles</button></form>'+ '</td></tr>';
+        });
+        $('#tablaDepartamentos').append(trHTML);
+    });
+});</script>
+    </head>
+    <body>
+		<table id="tablaDepartamentos">
+		</table>
+    </body>
+</html>

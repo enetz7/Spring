@@ -1,0 +1,22 @@
+<html>
+    <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+	    $(document).ready(function() {
+	    $.ajax({
+	        url: "http://localhost:8080/EmpleadoAll"
+	    }).then(function(response) {
+	    	var trHTML = '';
+	        $.each(response, function (i, item) {
+	            trHTML += '<tr><td>' +"Emp_no: "+ item.emp_no + '</td><td>' + "Nombre: "+item.apellido +'</td>' +'<td>'+'<form method="POST" action="/verEmpleado?id='+item.emp_no+'">'+'<button type="submit">Ver detalles</button></form>'+ '</td></tr>';
+	        });
+	        $('#tablaEmpleado').append(trHTML);
+	    });
+		});
+	    </script>
+    </head>
+    <body>
+		<table id="tablaEmpleado">
+		</table>
+    </body>
+</html>

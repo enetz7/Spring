@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Empleado</title>
+        <link rel="stylesheet" href="../static/css/departamentos_home.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    </head>
+    <body>
+        <div>
+        <center>
+        <h4>Inserta un nuevo empleado</h4>
+        <form action="/home/empleado/insertar" method="post"><br>
+  			<label for="fname">Nombre:</label><br>
+  			<input type="text" id="nombre" name="nombre"><br>
+  			<label for="fdinero">Dinero:</label><br>
+  			<input type="text" id="dinero" name="dinero"><br>
+  			<label for="fdept_no">Dept_no:</label><br>
+  			<input type="text" id="dept_no" name="dept_no"><br>
+  			<p><button type="submit">Guardar</button></p>
+		</form>
+        </center>
+        </div>
+    </body>
+</html>
