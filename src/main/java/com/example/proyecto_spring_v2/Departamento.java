@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 
@@ -27,9 +28,8 @@ public class Departamento implements Serializable {
 
 	private String loc;
 	
-	
-	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY,mappedBy = "departamento")
+	@JsonIgnoreProperties({"departamento"})
+	@OneToMany(fetch = FetchType.EAGER,mappedBy = "departamento")
 	private List<Empleados> empleados;
 	
 	

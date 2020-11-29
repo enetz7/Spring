@@ -1,5 +1,8 @@
 package com.example.proyecto_spring_v2;
 
+import java.util.List;
+
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 
@@ -8,4 +11,6 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface EmpleadoRepository extends CrudRepository<Empleados, Integer> {
 
+	@Query(value="SELECT * FROM Empleados WHERE dept_no = ?1", nativeQuery = true)
+	List<Empleados> findEmpleado(int dept_no);
 }

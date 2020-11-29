@@ -5,33 +5,34 @@ import java.util.List;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 @Entity
-//@NamedQuery(name="Proyecto.findOne", query="SELECT p FROM proyecto p WHERE p.id=?1")
 public class Proyecto{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="idProy")
-	private int id;
+	private int idProy;
+	
 	@Column(name="nombre")
 	private String nombre;
 	
-	@JsonIgnore
-	@ManyToMany(mappedBy="proyectos")
+	@JsonIgnoreProperties({"proyectos"})
+	@ManyToMany(fetch = FetchType.EAGER,mappedBy="proyectos")
 	private List<Empleados> empleados;
+	
 	
 	public Proyecto(){
 	}
-	public Proyecto(int id,String nombre) {
-		this.id=id;
+	public Proyecto(int idProy,String nombre) {
+		this.idProy=idProy;
 		this.nombre=nombre;
 	}
-	public int getId(){
-		return id;
+	public int getidProy(){
+		return idProy;
 	}
-	public void setId(int id){
-		this.id=id;
+	public void setidProy(int idProy){
+		this.idProy=idProy;
 	}
 	public String getNombre(){
 		return nombre;

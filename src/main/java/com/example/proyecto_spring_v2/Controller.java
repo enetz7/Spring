@@ -1,12 +1,18 @@
 package com.example.proyecto_spring_v2;
 
+import java.util.List;
 import java.util.Optional;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.transaction.Transactional;
 
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 import org.springframework.context.annotation.Configuration;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.*;
@@ -134,6 +140,21 @@ public class Controller extends WebMvcConfigurationSupport {
 	}
 	
 	
+	@RequestMapping(method = RequestMethod.GET, value = "/home/empleado/deparEmpleado")
+	public ModelAndView indexView11() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("verDeparEmpleados.html");
+		return mav;
+	}
+
+	
+	@RequestMapping(method = RequestMethod.POST, value = "/home/departamentos/departEmpleado")
+	public @ResponseBody List<Empleados> indexView10(@RequestParam int dept_no) {
+		List<Empleados> empleados = empleadoRepository.findEmpleado(dept_no);
+		return empleados;
+	}
+	
+	
 	/////////////////////////DEPARTAMENTO
 	
 
@@ -201,14 +222,14 @@ public class Controller extends WebMvcConfigurationSupport {
 
 	}
 	
-	
+
 	@RequestMapping(method = RequestMethod.GET, value = "/home/departamentos/departamentoall")
 	public ModelAndView indexView6() {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("verDepartamentos.html");
 		return mav;
 	}
-
+	
 	@RequestMapping(method = RequestMethod.POST, value = "/verDepartamento")
 	public @ResponseBody Optional<Departamento> indexView7(@RequestParam int dept_no) {
 

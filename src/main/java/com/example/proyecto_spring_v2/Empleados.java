@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,7 +13,10 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
+import org.springframework.data.jpa.repository.Query;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 
@@ -33,25 +37,23 @@ public class Empleados{
 
 	private String apellido;
 
-	@JsonIgnore
+	@JsonIgnoreProperties({"empleados"})
 	@ManyToOne
     @JoinColumn(name = "dept_no")
 	private Departamento departamento;
 	
-	@JsonIgnore
-	@ManyToMany
+	@JsonIgnoreProperties({"empleados"})
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(
-		name="asinacionproyecto",
+		name="asignacionproyecto",
 		joinColumns={
 				@JoinColumn(name="emp_no")
 		},
 		inverseJoinColumns= {
 				@JoinColumn(name="idProy")
 		}
-			)	
+	)
     private List<Proyecto> proyectos;
-
-
 
 	public Empleados() {
 	}
